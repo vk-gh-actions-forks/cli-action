@@ -1,7 +1,7 @@
-const core = require('@actions/core');
-const tc = require('@actions/tool-cache');
-const io = require('@actions/io');
-const { execSync } = require('child_process');
+import * as core from '@actions/core';
+import * as tc from '@actions/tool-cache';
+import * as io from '@actions/io';
+import { execSync } from 'child_process';
 
 const workspace = process.env.GITHUB_WORKSPACE;
 const binDir = `${workspace}/bin`;
@@ -44,8 +44,7 @@ async function executeInstallSh(installPath) {
   // execute script
   await io.mkdirP(installPath);
   const installCommand = `${downloadPath} --debug --no-package-manager --install-path ${installPath}`
-  stdout = execSync(installCommand, { timeout: 30000 });
-  console.log(Buffer.from(stdout).toString("utf-8"))
+  execSync(installCommand, { timeout: 30000, stdio: "inherit" });
 
   // add binary to PATH
   core.addPath(installPath);
