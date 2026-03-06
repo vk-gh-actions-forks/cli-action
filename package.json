@@ -2,10 +2,10 @@
   "name": "cli-action",
   "version": "4.0.0",
   "description": "GitHub Action to install the Doppler CLI",
-  "main": "index.js",
+  "main": "bin/index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup --config rollup.config.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,9 @@
     "@actions/tool-cache": "^4.0.0"
   },
   "devDependencies": {
-    "@types/node": "^24.0.0"
+    "@rollup/plugin-commonjs": "^29.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@types/node": "^24.0.0",
+    "rollup": "^4.59.0"
   }
 }
