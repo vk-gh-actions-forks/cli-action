@@ -1,6 +1,6 @@
 {
   "name": "cli-action",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "GitHub Action to install the Doppler CLI",
   "main": "bin/index.js",
   "type": "module",
