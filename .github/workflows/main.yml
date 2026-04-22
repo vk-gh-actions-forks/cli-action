@@ -1,15 +1,31 @@
-on: [push]
+name: Test
+on: 
+  pull_request:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
 
 jobs:
   test_action:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, ubuntu-20.04, macos-latest, macos-11, windows-latest, windows-2019]
+        os: 
+          - ubuntu-latest
+          - ubuntu-24.04
+          - ubuntu-22.04
+          - macos-latest
+          - macos-15
+          - macos-14
+          - windows-latest
     name: Install the cli
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
       - name: Install CLI
         uses: ./
         id: install
